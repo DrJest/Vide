@@ -14,7 +14,8 @@
             autoplay: true,
             position: "50% 50%",
             posterType: "detect",
-            resizing: true
+            resizing: true,
+            callback: function(){}
         },
 
         // is iOs?
@@ -306,7 +307,14 @@
                     vide.resize();
                 }
             });
+
         }
+        //add a callback option
+        if($.isFunction(vide.settings.callback))
+            vide.settings.callback();
+        else if(typeof(vide.settings.callback)==="string") {
+            eval(vide.settings.callback);
+        } 
     };
 
     /**
